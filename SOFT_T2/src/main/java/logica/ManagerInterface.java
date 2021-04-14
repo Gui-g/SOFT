@@ -1,7 +1,9 @@
 package logica;
 
 import dados.Node;
+import dados.Onibus;
 import dados.Rota;
+import dados.Usuario;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
 
@@ -15,5 +17,11 @@ public interface ManagerInterface {
   SimpleWeightedGraph<String, DefaultWeightedEdge> criarGrafo(List<Rota> rotas);
 
   Long calcularTempoRota(Rota rota);
+
+  Double depositarCredito(Usuario user, Double valor);
+
+  Double pagarOnibus(Usuario user, Double valor);
+
+  ArrayList<Onibus> onibusRota(ArrayList<Onibus> list, Rota rota);
 
 }

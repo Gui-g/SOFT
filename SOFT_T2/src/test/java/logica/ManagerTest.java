@@ -1,9 +1,13 @@
 package logica;
 
 import dados.Node;
+import dados.Onibus;
 import dados.Rota;
+import dados.Usuario;
 import mock.MapaMock;
+import mock.OnibusMock;
 import mock.RotaMock;
+import mock.UsuarioMock;
 import org.jgrapht.alg.isomorphism.VF2GraphIsomorphismInspector;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
@@ -31,7 +35,13 @@ public class ManagerTest {
   private final Rota rotaD = RotaMock.getD();
   private final Node inicio = new Node("A");
   private final Node fim = new Node("E");
+  private final Usuario user = UsuarioMock.get();
+  private final Onibus onibusA = OnibusMock.getA();
+  private final Onibus onibusB = OnibusMock.getB();
+  private final Onibus onibusC = OnibusMock.getC();
+  private final Onibus onibusD = OnibusMock.getD();
   ArrayList<Rota> rotas;
+  ArrayList<Onibus> onibus;
 
   @Before
   public void setUp() {
@@ -40,6 +50,11 @@ public class ManagerTest {
     rotas.add(rotaB);
     rotas.add(rotaC);
     rotas.add(rotaD);
+    onibus = new ArrayList<>();
+    onibus.add(onibusA);
+    onibus.add(onibusB);
+    onibus.add(onibusC);
+    onibus.add(onibusD);
   }
 
   @Test
@@ -66,6 +81,34 @@ public class ManagerTest {
     Long expected = 28L;
 
     Long actual = manager.calcularTempoRota(rotaA);
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void depositarCredito() {
+    Double expected = 550.0;
+
+    Double actual = manager.depositarCredito(user, 50.0);
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void pagarOnibus() {
+    Double expected = 450.0;
+
+    Double actual = manager.pagarOnibus(user, 50.0);
+
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  public void onibusRota() {
+    ArrayList<Onibus> expected = new ArrayList<>();
+    expected.add(onibusA);
+
+    ArrayList<Onibus> actual = manager.onibusRota(onibus, rotaA);
 
     assertEquals(expected, actual);
   }

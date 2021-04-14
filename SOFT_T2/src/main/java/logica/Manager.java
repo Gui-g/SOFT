@@ -1,7 +1,9 @@
 package logica;
 
 import dados.Node;
+import dados.Onibus;
 import dados.Rota;
+import dados.Usuario;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.YenKShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -97,6 +99,34 @@ public class Manager implements ManagerInterface {
     }
 
     return graph;
+  }
+
+  @Override
+  public Double depositarCredito(Usuario user, Double valor) {
+
+    user.increaseCredit(valor);
+
+    return user.getCredit();
+  }
+
+  @Override
+  public Double pagarOnibus(Usuario user, Double valor) {
+
+    user.payBus(valor);
+
+    return user.getCredit();
+  }
+
+  @Override
+  public ArrayList<Onibus> onibusRota(ArrayList<Onibus> list, Rota rota) {
+    ArrayList<Onibus> onibusRota = new ArrayList<>();
+
+    for (Onibus bus : list) {
+      if (bus.getRoute().equals(rota))
+        onibusRota.add(bus);
+    }
+
+    return onibusRota;
   }
 
 }
