@@ -6,6 +6,7 @@ public class Onibus {
 	public String nextStop;
 	public Rotas route;
 	public LocalTime nextStopPred;
+	public int direction;
 	
 	public int getId() {
 		return id;
@@ -31,7 +32,13 @@ public class Onibus {
 	public void setNextStopPred(LocalTime nextStopPred) {
 		this.nextStopPred = nextStopPred;
 	}
-	
+	public int getDirection() {
+		return direction;
+	}
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+
 	public void changePred(int offset, String type) {
 		switch(type) {
 			case "hour":
