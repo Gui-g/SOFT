@@ -1,4 +1,4 @@
-package Dados;
+package main.Dados;
 
 public class Usuario {
 	private String user_name;

@@ -1,4 +1,4 @@
-package Dados;
+package main.Dados;
 import java.time.LocalTime;
 
 public class Onibus {

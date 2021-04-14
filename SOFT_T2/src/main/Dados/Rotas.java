@@ -1,4 +1,4 @@
-package Dados;
+package main.Dados;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -10,6 +10,12 @@ public class Rotas {
 	public Rotas() {
 		this.nextStop = new ArrayList<String>();
 		this.secondsNextStop = new ArrayList<Integer>();
+	}
+
+	public Rotas(LocalTime start, ArrayList<String> stopList, ArrayList<Integer> timeList) {
+		this.start = start;
+		this.nextStop = stopList;
+		this.secondsNextStop = timeList;
 	}
 	
 	public LocalTime getStart() {
