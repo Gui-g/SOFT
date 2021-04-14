@@ -1,43 +1,42 @@
 package mock;
 
-import dados.Node;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleWeightedGraph;
 
 public class MapaMock {
 
-  public static Set<Node> get() {
-    Set<Node> mapa = new HashSet<>();
+  public static SimpleWeightedGraph<String, DefaultWeightedEdge> get() {
+    SimpleWeightedGraph<String, DefaultWeightedEdge> graph = new SimpleWeightedGraph<>(DefaultWeightedEdge.class);
 
-    Node nodeA = new Node("A");
-    Node nodeB = new Node("B");
-    Node nodeC = new Node("C");
-    Node nodeD = new Node("D");
-    Node nodeE = new Node("E");
-    Node nodeF = new Node("F");
+    graph.addVertex("A");
+    graph.addVertex("B");
+    graph.addVertex("C");
+    graph.addVertex("D");
+    graph.addVertex("E");
+    graph.addVertex("F");
 
-    nodeA.addDestination(nodeB, 10);
-    nodeA.addDestination(nodeC, 15);
+    graph.addEdge("A", "B");
+    graph.setEdgeWeight(graph.getEdge("A", "B"), 10);
+    graph.addEdge("A", "C");
+    graph.setEdgeWeight(graph.getEdge("A", "C"), 15);
 
-    nodeB.addDestination(nodeD, 12);
-    nodeB.addDestination(nodeF, 15);
+    graph.addEdge("B", "D");
+    graph.setEdgeWeight(graph.getEdge("B", "D"), 12);
+    graph.addEdge("B", "F");
+    graph.setEdgeWeight(graph.getEdge("B", "F"), 15);
 
-    nodeC.addDestination(nodeE, 10);
+    graph.addEdge("C", "E");
+    graph.setEdgeWeight(graph.getEdge("C", "E"), 10);
 
-    nodeD.addDestination(nodeE, 2);
-    nodeD.addDestination(nodeF, 1);
+    graph.addEdge("D", "E");
+    graph.setEdgeWeight(graph.getEdge("D", "E"), 2);
+    graph.addEdge("D", "F");
+    graph.setEdgeWeight(graph.getEdge("D", "F"), 1);
 
-    nodeF.addDestination(nodeE, 5);
+    graph.addEdge("F", "E");
+    graph.setEdgeWeight(graph.getEdge("F", "E"), 5);
 
-    mapa.add(nodeA);
-    mapa.add(nodeB);
-    mapa.add(nodeC);
-    mapa.add(nodeD);
-    mapa.add(nodeE);
-    mapa.add(nodeF);
-
-    return mapa;
+    return graph;
   }
 
 }

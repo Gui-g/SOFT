@@ -43,7 +43,7 @@ public class RotaMock {
     nodes.add(nodeE);
 
     nodeA.addDestination(nodeC, 15);
-    nodeC.addDestination(nodeE, 15);
+    nodeC.addDestination(nodeE, 10);
 
     route.setPath(nodes);
     return route;
